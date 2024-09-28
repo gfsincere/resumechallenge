@@ -6,10 +6,12 @@
     {% url 'about' as about_url %}
     <span>{% if request.path == about_url %}About Me{% else %} <a href="{% url 'about' %}"> About Me </a> {% endif %} </span>
     {%url 'contact' as contact_url%}
-    <span>{% if request.path == contact_url %}Contact Me{% else %} <a href="{% url 'contact' %}"> Contact Me </a> {% endif %} </span>
+    <span>{% if request.path == contact_url %}Contact Me{% else %} <a href="{% url 'contact' %}"> Contact Me </a> {% endif %}</span>
     <span style="float:right">
         {% if user.is_authenticated %}
-            <span>Hi {{user.username}}! </span>
+            {% url 'profile' as profile_url %}
+            <span>Hi {%if request.path == profile_url %} {{user.username}}
+                {%else %} <a href="{{ profile_url }}">{{user.username}} </a> {% endif %}!</span>
             <span>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Logout
