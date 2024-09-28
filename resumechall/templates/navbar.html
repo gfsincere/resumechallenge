@@ -10,7 +10,14 @@
     <span style="float:right">
         {% if user.is_authenticated %}
             <span>Hi {{user.username}}! </span>
-            <span><a href="{% url 'logout' %}">Logout</a></span>
+            <span>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                </form>
+            </span>
         {% else %} 
             <span><a href="{% url 'login' %}">Login</a></span>
         {% endif %} 
