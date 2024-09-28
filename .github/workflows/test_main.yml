@@ -7,27 +7,25 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        - name: Checkout code
+          - name: Checkout code
             uses: actions/checkout@v3
 
-        - name: Lint YAML
-            uses: actions/checkout@v3
+          - name: Lint YAML
             run: |
                 yamllint .github/workflows/main.yml
 
-        - name: Validate GitHub Actions Workflow
-            uses: actions/checkout@v3
+          - name: Validate GitHub Actions Workflow
             run: |
                 act -j deploy
 
-        - name: Test AWS CLI Installation
+          - name: Test AWS CLI Installation
             run: |
                 aws --version
 
-        - name: Test AWS Credentials Configuration
+          - name: Test AWS Credentials Configuration
             run: |
                 aws sts get-caller-identity
 
-        - name: Test S3 Sync Command
+          - name: Test S3 Sync Command
             run: |
                 aws s3 sync --dryrun . s3://test-bucket --delete
