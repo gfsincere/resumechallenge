@@ -1,12 +1,12 @@
 <nav>
-    {% url 'index' as index_url %}
-    <span>{% if request.path == index_url %}Home{% else %} <a href="{% url 'index' %}"> Home </a> {% endif %} </span>
-    {% url 'resume' as resume_url %}
-    <span>{% if request.path == resume_url %}Resume{% else %} <a href="{% url 'resume' %}"> Resume </a> {% endif %} </span>
-    {% url 'about' as about_url %}
-    <span>{% if request.path == about_url %}About Me{% else %} <a href="{% url 'about' %}"> About Me </a> {% endif %} </span>
-    {%url 'contact' as contact_url%}
-    <span>{% if request.path == contact_url %}Contact Me{% else %} <a href="{% url 'contact' %}"> Contact Me </a> {% endif %}</span>
+    {% url 'public:index' as index_url %}
+    <span>{% if request.path == index_url %}Home{% else %} <a href="{% url 'public:index' %}"> Home </a> {% endif %} </span>
+    {% url 'public:resume' as resume_url %}
+    <span>{% if request.path == resume_url %}Resume{% else %} <a href="{% url 'public:resume' %}"> Resume </a> {% endif %} </span>
+    {% url 'public:about' as about_url %}
+    <span>{% if request.path == about_url %}About Me{% else %} <a href="{% url 'public:about' %}"> About Me </a> {% endif %} </span>
+    {%url 'public:contact' as contact_url%}
+    <span>{% if request.path == contact_url %}Contact Me{% else %} <a href="{% url 'public:contact' %}"> Contact Me </a> {% endif %}</span>
     <span style="float:right">
         {% if user.is_authenticated %}
             {% url 'profile' as profile_url %}

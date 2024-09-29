@@ -14,8 +14,6 @@ def index(request):
 
 def about(request):
 
-
-     
     return render(request, "about.html")
 
 
@@ -25,5 +23,3 @@ def contact(request):
 
 def resume(request):
     return render(request, "resume.html")
-
-
