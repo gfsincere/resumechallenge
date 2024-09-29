@@ -120,7 +120,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 # Governs login/logout behavior
-LOGIN_URL = "login"
+LOGIN_URL = "accounts:login"
 LOGIN_REDIRECT_URL = "public:index"
 LOGOUT_REDIRECT_URL = "public:index"
 
