@@ -1,2 +1,5 @@
 #Everything from prod lus dev tools
 -r prod.txt
+
+black==19.10.b0
+mypy==0.782
