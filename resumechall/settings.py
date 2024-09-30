@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 #    "resumechall.apps.public",
     "resumechall.apps.accounts",
+#    "accounts",
 ]
 
 MIDDLEWARE = [
