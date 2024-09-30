@@ -1,8 +1,6 @@
-version: '3.8'
 
 x-service-volumes: &service-volumes
-  volumes:
-    - .:/app/:rw,cached
+  - .:/app/:rw,cached
 
 services:
   web:
@@ -10,8 +8,14 @@ services:
     container_name: AWSresumechallenge
     command: python manage.py runserver 0.0.0.0:8000
     volumes: *service-volumes
+    depends_on:
+      - db_migration
     ports:
       - "8000:8000"
+  db_migration:
+    image: resumechallenge:latest
+    command: python manage.py migrate
+    volumes: *service-volumes
 
 
 
