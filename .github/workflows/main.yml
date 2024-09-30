@@ -22,6 +22,6 @@ jobs:
 
       - name: Sync files to S3
         run: |
-          aws s3 sync . s3://gregoriethomas.com --delete --exclude "bin/*" --debug
+          aws s3 sync . s3://gregoriethomas.com --debug --delete --exclude "bin/*" --exclude ".venv/*" --exclude "resumechallenge/bin/*"
 
     
