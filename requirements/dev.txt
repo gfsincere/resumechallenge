@@ -1,5 +1,8 @@
-#Everything from prod lus dev tools
--r prod.txt
+# dev.txt is for development only
+# Everything from prod comes into dev tools
+-r ./prod.txt
 
-black==19.10.b0
-mypy==0.782
+black==24.8.0
+mypy==1.11.2
+# typed-ast==1.4.3
+

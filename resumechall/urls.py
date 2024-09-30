@@ -23,6 +23,6 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("resumechall.apps.public.urls")),
-    path("accounts/", include("resumechall.apps.accounts.urls")),
+    path("", include("resumechall.apps.public.urls", namespace="public")),
+    path("accounts/", include("resumechall.apps.accounts.urls", namespace="accounts")),
 ]

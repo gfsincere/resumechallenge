@@ -1,0 +1,33 @@
+version: '3.8'
+
+x-service-volumes: &service-volumes
+  volumes:
+    - .:/app/:rw,cached
+
+services:
+  web:
+    image: resumechallenge:latest
+    container_name: AWSresumechallenge
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes: *service-volumes
+    ports:
+      - "8000:8000"
+
+
+
+
+#  db:
+#    image: postgres:13
+#    container_name: postgres_server
+#    environment:
+#      POSTGRES_USER: user
+#      POSTGRES_PASSWORD: password
+#      POSTGRES_DB: mydatabase
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#
+#volumes:
+#  postgres_data:
+#  driver: local

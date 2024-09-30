@@ -9,7 +9,7 @@
     <span>{% if request.path == contact_url %}Contact Me{% else %} <a href="{% url 'public:contact' %}"> Contact Me </a> {% endif %}</span>
     <span style="float:right">
         {% if user.is_authenticated %}
-            {% url 'profile' as profile_url %}
+            {% url 'accounts:profile' as profile_url %}
             <span>Hi {%if request.path == profile_url %} {{user.username}}
                 {%else %} <a href="{{ profile_url }}">{{user.username}} </a> {% endif %}!</span>
             <span>
@@ -21,7 +21,7 @@
                 </form>
             </span>
         {% else %} 
-            <span><a href="{% url 'login' %}">Login</a></span>
+            <span><a href="{% url 'accounts:login' %}">Login</a></span>
         {% endif %} 
     </span>
 <nav>
