@@ -81,14 +81,14 @@ WSGI_APPLICATION = "resumechall.wsgi.application"
 POSTGRES_DB = os.environ.get("POSTGRES_DB", default="postgres")
 POSTGRES_USER = os.environ.get("POSTGRES_USER", default="postgres")
 POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD", default="postgres")
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="")
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="postgres")
 
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": POSTGRES_DB,
-        "NAME": POSTGRES_USER,
+        "USER": POSTGRES_USER,
         "PASSWORD": POSTGRES_PASSWORD,
         "HOST": POSTGRES_HOST,
         "PORT": 5432,
