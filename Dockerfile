@@ -1,6 +1,6 @@
 FROM python:3.12.6-slim AS production
 
-# Install system dependencies required for building certain Python packages
+# Install system dependencies required for building Postgres and website packages
 RUN apt-get update && apt-get install -y \
     gcc \
     python3-dev \
