@@ -11,5 +11,6 @@
     "python.testing.autoTestDiscoverOnSaveEnabled": true,
     "python.testing.pytestArgs": [
         "."
-    ]
+    ],
+    "makefile.configureOnOpen": true
 }

@@ -7,6 +7,12 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     build-essential \
     zlib1g-dev \
+    bash \
+    libffi-dev \
+    openssl \
+    libpq-dev \
+    musl-dev \
+    postgresql \
 #    python-django-extensions \
     && rm -rf /var/lib/apt/lists/*
 
@@ -20,6 +26,7 @@ COPY manage.py  ./manage.py
 COPY setup.cfg ./setup.cfg
 COPY resumevenv ./resumevenv
 COPY resumechall ./resumechall
+COPY . .
 
 EXPOSE 8000
 
