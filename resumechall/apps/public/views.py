@@ -23,3 +23,9 @@ def contact(request):
 
 def resume(request):
     return render(request, "resume.html")
+
+def projects(request):
+    return render(request, "projects.html")
+
+def blog(request):
+    return render(request, "blog.html")
