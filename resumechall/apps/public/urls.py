@@ -12,6 +12,6 @@ urlpatterns = [
     path("contact", views.contact, name="contact"),
     path("resume", views.resume, name="resume"),
     path("projects", views.projects, name="projects"),
-    path("blog", views.blog, name="blog"),
+    path("photos", views.photos, name="photos"),
 
 ]

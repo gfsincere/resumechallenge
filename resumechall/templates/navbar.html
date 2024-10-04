@@ -8,15 +8,15 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
             {% url 'public:index' as index_url %}
-            <li class="nav-item"><a class="nav-link js-scroll-trigger {% if request.path == index_url %}active{% endif %}" href="{{index_url}}">About</a>  </li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger {% if request.path == index_url %}active{% endif %}" href="{{index_url}}">Home</a>  </li>
             {% url 'public:resume' as resume_url %}
             <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == resume_url %}active{% endif %}" href="{{resume_url}}">Resume</a></li>
             {% url 'public:about' as about_url %}
             <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == about_url %}active{% endif %}" href="{{about_url}}">About</a></li>
             {%url 'public:contact' as contact_url %}
-            <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == contact_url %}active{% endif %}" href="contact_url">Contact</a></li>
-            {%url 'public:blog' as blog_url%}
-            <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == blog_url %}active{% endif %}" href="{{blog_url}}">Blog</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == contact_url %}active{% endif %}" href="{{contact_url}}">Contact</a></li>
+            {%url 'public:photos' as photos_url%}
+            <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == photos_url %}active{% endif %}" href="{{blog_url}}">Blog</a></li>
             {%url 'public:projects' as projects_url%}
             <li class="nav-item"><a class="nav-link js-scroll-trigger{% if request.path == projects_url %}active{% endif %}" href="{{projects_url}}">Projects</a></li>
         </ul>
