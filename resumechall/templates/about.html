@@ -1,5 +1,6 @@
 <!-- templates/about.html-->
 {% extends "base.html" %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,11 +8,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title %} About Me</title> {% endblock %}
+    <style>
+    </style>
+
 </head>
 <body>
     {% block content %}
-    <h1>Hello, World!</h1>
-    <p>Well lets see if this works.</p>
+    <h1 class="gallery-header">AWS Cloud Resume Challenge</h1>
+    <p class="left-about">
+        So I found this challenge from a Medium post. I had been unemployed for 4 weeks 
+        and I was looking for a project to do, something to learn and add to my resume in the meantime. 
+        I knew it was going to be devops plus some full-stack work, but I was eager to get into it. 
+    </p>
+    <p class="right-about">
+        I have had a nice document store in Notion for all of my notes for work and tooling, along with some personal language learning
+        goals I have been tracking. 
+    
+        I knew I was going to get some more experience with AWS and Python, 2 things I hadn't seriosuly worked with in a few years.
+        Setting up my AWS root account, breaking out into prod and dev accounts were fairly quick, and once I had my S3 set up for document storage,
+        I worked on building out a Github Action so that when I made a commit to my project, it would trigger a build and deploy to my S3 bucket.
+        This work was done in a day, and then I set out on the rusty stuff: Python and Django.
+    </p>
+    <p class="left-about">
+        Using python again was like relearning how to ride a bike. Once I got my feet back up under me, I was off to the races. 
+        I had the backend built and containerized in a Docker container with a Postgres database and a Django app in a couple days.
+        There were a few changes to Django that threw me for a loop, but I was good after I spent an evening reading through the docs and falling asleep
+        to a 13-hour Django tutorial on YouTube. Once all the pages and backend was built, it was on to the part of IT I've
+        intentionally avoided the whole time: frontend HTML/CSS and Javascript.
+    </p>
+    <p class="right-about">
+        It's not that I don't like frontend work, it's just that I know I'm not visually creative at all. 
+        You don't want me designing anything outside of something minimalistic. I can appreciate good design, but I can't do it myself. 
+        I like things simple and I want them to work, but anyone can throw up a basic webpage in Arial sans serif and call it a day.
+        This was designed to be a challenge, so I did want to challenge myself and have it look good. I realized early how much AI can ruin
+        your ability to learn something on my own. There were tools like Webflow that allowed you to export your HTML and CSS and not 
+        have to write it, aka understand what's actually happening yourself. As a security guy, I really can't let 
+        nefarious activities like that slide. Plus it's not a challenege if I just click a bunch of boxes and copy off a Youtube tutorial, 
+        so I decided to do it all by hand.
+    </p>
+
+    <img class="center.img" src="{% static "theme/assets/img/bill.gif" %}" alt=""> </img>
+
     {% endblock %}
 
 </body>

@@ -1,47 +1,58 @@
 <!-- templates/photos.html-->
-{%extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'theme/css/gallery.css' %}?v=1">
+{% endblock %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title %} Photos </title> {% endblock %}
-    <link rel="stylesheet" href="{% static 'theme/css/gallery.css' %}"> <!-- Link to the external CSS file -->
-
+    <title>{%block title %} Photo Gallery{% endblock %} </title> 
+    <link rel="stylesheet" href="{% static 'theme/css/gallery.css' %}?v=1">
+    <style>
+        
+    </style>
 </head>
 <body>
     {% block content %}
-    <h1>Photo Gallery</h1>
-
+    <h1 class="gallery-header">Photo Gallery</h1>
+<br>
+<br>
     <!-- Gallery Container -->
     <div class="gallery-container">
         <div class="gallery-item">
-            <img src="{% static "theme/assets/img/DJI_0051.JPG" %}}" alt="Photo 1">
-            <div class="description">
+            <img src="{% static 'theme/assets/img/DJI_0051.JPG' %}" alt="Photo 1">
+            <br>
+            <div class="description-gallery">
                 <hr>
                 <p>Cape Palliser, New Zealand 2022</p>
             </div>
         </div>
+        <br>
+        <br>
         <div class="gallery-item">
-            <img src="https://my-photo-bucket.s3.amazonaws.com/images/photo2.jpg" alt="Photo 2">
+            <img src="{% static 'theme/assets/img/DSC03146.JPG' %}" alt="Photo 1">
             <div class="description">
                 <hr>
-                <p>This is a description of Photo 2.</p>
+                <p>Bondi Beach, Sydney, Australia, 2024</p>
             </div>
         </div>
+        <br>
+        <br>
         <div class="gallery-item">
-            <img src="https://my-photo-bucket.s3.amazonaws.com/images/photo3.jpg" alt="Photo 3">
+            <img src="{% static "theme/assets/img/DSC04934.JPG" %}" alt="Photo 1">
             <div class="description">
                 <hr>
-                <p>This is a description of Photo 3.</p>
+                <p>Cuba Street, Wellington, New Zealand 2024</p>
             </div>
         </div>
         <!-- Add more gallery items as needed -->
     </div>
 
-    <script src={% static "theme/js/gallery.js" %}"></script>
+    <script src="{% static "theme/js/gallery.js" %}"></script>
     {% endblock %}
 
 </body>

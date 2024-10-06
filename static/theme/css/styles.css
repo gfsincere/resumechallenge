@@ -104,6 +104,86 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.gallery-container {
+  padding: 60px;
+  max-width: 1200px; /* Optional: To limit the overall width of the gallery */
+  margin: 0 auto; /* Center the gallery on the page */
+
+}
+
+.gallery-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+  max-width: 100%; /* Ensure it doesn't exceed the container's width */
+}
+
+/* Every odd item will have the description on the right (default) */
+.gallery-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+/* Every even item will have the description on the left */
+.gallery-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.gallery-item img {
+  max-width: 600px; /* Set max width of image */
+  max-height: 600px; /* Set max height of image */
+  height: auto; /* Maintain aspect ratio */
+  border: 3px solid black; /* Optional: Add border to images */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Optional: Box shadow for effect */
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.description-gallery {
+  flex: 1;
+  max-width: 300px; /* Ensure the description takes up the same width as the image */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding doesn't affect the max width */
+}
+
+.description-gallery hr {
+  border: none;
+  border-top: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.description-gallery p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .gallery-container {
+      grid-template-columns: 1fr; /* Stack images and description-gallerys vertically on small screens */
+  }
+
+  .gallery-item {
+      flex-direction: column; /* Stack image and description-gallery-gallery vertically */
+  }
+
+  .gallery-item:nth-child(odd) {
+      flex-direction: column; /* Ensure both follow the same layout in small screens */
+  }
+
+  .gallery-item img {
+      max-width: 100%; /* Image takes full width */
+      margin-bottom: 20px;
+  }
+
+  .description-gallery {
+      max-width: 100%; /* description-gallery takes full width */
+      padding-left: 0;
+  }
+}
+
+
 hr {
   margin: 1rem 0;
   color: inherit;
