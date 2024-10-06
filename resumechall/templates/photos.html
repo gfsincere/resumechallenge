@@ -1,5 +1,6 @@
 <!-- templates/photos.html-->
 {%extends 'base.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,12 +8,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title %} Photos </title> {% endblock %}
+    <link rel="stylesheet" href="{% static 'theme/css/gallery.css' %}"> <!-- Link to the external CSS file -->
+
 </head>
 <body>
-    {% include 'navbar.html'%}
     {% block content %}
-    <h1>Hello, World!</h1>
-    <p>Well lets see if this works.</p>
+    <h1>Photo Gallery</h1>
+
+    <!-- Gallery Container -->
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="{% static "theme/assets/img/DJI_0051.JPG" %}}" alt="Photo 1">
+            <div class="description">
+                <hr>
+                <p>Cape Palliser, New Zealand 2022</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://my-photo-bucket.s3.amazonaws.com/images/photo2.jpg" alt="Photo 2">
+            <div class="description">
+                <hr>
+                <p>This is a description of Photo 2.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://my-photo-bucket.s3.amazonaws.com/images/photo3.jpg" alt="Photo 3">
+            <div class="description">
+                <hr>
+                <p>This is a description of Photo 3.</p>
+            </div>
+        </div>
+        <!-- Add more gallery items as needed -->
+    </div>
+
+    <script src={% static "theme/js/gallery.js" %}"></script>
     {% endblock %}
 
 </body>
