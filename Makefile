@@ -25,4 +25,5 @@ compose-manage:
 start-server:
 	python manage.py runserver 0.0.0.0:80
 
-	
+helm-deploy:
+	helm upgrade --install --debug resume ./helm/resumechallenge	

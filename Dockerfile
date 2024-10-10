@@ -26,7 +26,7 @@ COPY manage.py  ./manage.py
 COPY setup.cfg ./setup.cfg
 COPY resumevenv ./resumevenv
 COPY resumechall ./resumechall
-COPY . .
+COPY static ./static
 COPY Makefile ./Makefile
 
 EXPOSE 8000
