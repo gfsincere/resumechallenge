@@ -9,7 +9,7 @@ x-database-variables: &database-variables
 
 x-app-variables: &app-variables
   <<: *database-variables
-  POSTGRES_HOST: postgres
+  POSTGRES_HOST: 5432
 
 
 

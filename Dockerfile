@@ -27,6 +27,7 @@ COPY setup.cfg ./setup.cfg
 COPY resumevenv ./resumevenv
 COPY resumechall ./resumechall
 COPY . .
+COPY Makefile ./Makefile
 
 EXPOSE 8000
 
