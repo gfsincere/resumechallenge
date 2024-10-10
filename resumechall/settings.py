@@ -78,19 +78,19 @@ WSGI_APPLICATION = "resumechall.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-POSTGRES_DB = os.environ.get("POSTGRES_DB", default="postgres")
-POSTGRES_USER = os.environ.get("POSTGRES_USER", default="postgres")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD", default="postgres")
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="postgres")
+POSTGRES_DB = os.environ.get("POSTGRES_DB")
+POSTGRES_USER = os.environ.get("POSTGRES_USER")
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") # Change this to your postgres password
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="localhost") 
 
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "killmonger",
-        "PASSWORD": "POSTGRES_PASSWORD",
-        "HOST": "POSTGRES_HOST",
+        "NAME": POSTGRES_DB,
+        "USER": POSTGRES_USER,
+        "PASSWORD": POSTGRES_PASSWORD,
+        "HOST": POSTGRES_HOST,
         "PORT": 5432,
 
     }
