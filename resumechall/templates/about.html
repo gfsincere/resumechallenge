@@ -15,6 +15,8 @@
 <body>
     {% block content %}
     <h1 class="gallery-header">AWS Cloud Resume Challenge</h1>
+    <br>
+    <br>
     <p class="left-about">
         So I found this challenge from a Medium post. I had been unemployed for 4 weeks 
         and I was looking for a project to do, something to learn and add to my resume in the meantime. 
@@ -43,12 +45,23 @@
         This was designed to be a challenge, so I did want to challenge myself and have it look good. I realized early how much AI can ruin
         your ability to learn something on my own. There were tools like Webflow that allowed you to export your HTML and CSS and not 
         have to write it, aka understand what's actually happening yourself. As a security guy, I really can't let 
-        nefarious activities like that slide. Plus it's not a challenege if I just click a bunch of boxes and copy off a Youtube tutorial, 
+        nefarious activities like that slide. Plus it's not a challenge if I just click a bunch of boxes and copy off a Youtube tutorial, 
         so I decided to do it all by hand.
     </p>
-
-    <img class="center.img" src="{% static "theme/assets/img/bill.gif" %}" alt=""> </img>
-
+    <div class='container-img-about'> 
+        <img class="center-img-about" src="{% static "theme/assets/img/bill.gif" %}" alt="Bill O Reilly doing it live"> </img>
+        <p class="subtext-img">Me doing it live</p>
+    </div>
+    <p class="left-about">
+        Man, learning HTML and CSS was a beast. It was fairly simple to understand, but the amount of CMD+S, Alt-Tab, and refresh is insane.
+        I definitely see the benefits of using something like Webflow in the future, but for now, I'm glad I did it all solo dolo. 
+        It makes sense to understand what UI/UX actually does after all, and getting a full grasp of all moving parts.
+        Learning Javascript was a bit easier, but I also wasn't trying to do anything complicated this time, though I 
+        do have future plans to jazz up the photo page a bit more.
+    </p>
+    <p class="right-about">
+        Meanwhile, during all this I'm still studying for the AWS Cloud Practicioner exam. I've been watching training videos on Youtube off and on,
+        not really putting too much focus into it. 
     {% endblock %}
 
 </body>

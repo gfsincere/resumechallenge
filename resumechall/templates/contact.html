@@ -11,8 +11,21 @@
 <body>
     {% include 'navbar.html'%}
     {% block content %}
-    <h1>Hello, World!</h1>
-    <p>Well lets see if this works.</p>
+    <h2 class="contact">Contact Me</h2>
+    <p class="contact-info"> 
+        If you would like to get in touch with me about opportunities, please email me at:  
+    </p>
+    <p class="contact-info">
+        <a href="mailto:hello@gregoriethomas.com">hello@gregoriethomas.com
+        </a>
+    </p>
+
+    <p class="contact-info">
+        I am also available on LinkedIn at:
+    </p>
+    <p class="contact-info"> 
+        <a href="https://www.linkedin.com/in/gregoriethomas">www.linkedin.com/in/gregoriethomas</a>
+    </p>
     {% endblock %}
 
 </body>

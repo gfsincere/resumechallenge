@@ -16,7 +16,7 @@
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
   --bs-red: #dc3545;
-  --bs-orange: #bd5d38;
+  --bs-orange: #000000;
   --bs-yellow: #ffc107;
   --bs-green: #198754;
   --bs-teal: #20c997;
@@ -34,7 +34,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #bd5d38;
+  --bs-primary: #000000;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -102,6 +102,47 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.right-about {
+  text-align: right; /* Right-aligns the text */
+  width: calc(100% / 12 * 5); /* Makes it take up 5 out of 12 columns */
+  margin-left: auto; /* Ensures that the element stays to the right */
+  padding-right: 20px; /* Adds some space to the right */
+}
+
+.left-about {
+  text-align: left; /* Right-aligns the text */
+  width: calc(100% / 12 * 5); /* Makes it take up 5 out of 12 columns */
+  margin-right: auto; /* Ensures that the element stays to the right */
+  padding-left: 20px; /* Adds some space to the left */
+}
+
+.container-img-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.center-img-about {
+  display: block;
+  width: 300px;          /* Optional: Set a width for the image */
+}
+
+
+.subtext-img {
+  font-size: 1rem;     /* Adjust the font size for the subtext */
+  color: gray;         /* Set a color for the subtext */
+  margin-top: 2px;     /* Add some space above the subtext */
+}
+
+.gallery-header {
+  text-align: center; /* Center the text */
+  margin-bottom: 60px; /* Add space below the header */
+  font-size: 3rem; /* Adjust the font size */
 }
 
 .gallery-container {
@@ -183,6 +224,22 @@ body {
   }
 }
 
+.contact {
+  font-size: 2.5rem; /* Adjust the font size */
+  text-align: center; /* Center the text */
+  margin-bottom: 60px; /* Add space below the header */
+  margin-top: 300px; /* Add space above the header */
+  display: flex; /* Align items in a row */
+  justify-content: center; /* Center the items */
+  align-items: center;
+}
+ 
+.contact-info {
+  display: flex; /* Align items in a row */
+  justify-content: center; /* Center the items */
+  margin-bottom: 20px; /* Add space below the contact info */
+  font-size: 1.3rem; /* Adjust the font size */
+}
 
 hr {
   margin: 1rem 0;
