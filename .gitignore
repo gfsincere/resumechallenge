@@ -8,6 +8,8 @@ __pycache__/
 
 # C extensions
 *.so
+# Ignore settings file
+resumechall/settings.py
 
 #Docker Compose file
 docker-compose.yml
