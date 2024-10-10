@@ -1,6 +1,5 @@
 import os
 
-
 class ImageGallery:
     def __init__(self, path):
         self.folder_path = folder_path
@@ -13,7 +12,7 @@ class ImageGallery:
             if os.path.splitext(img)[1].lower() in self.image_extensions
         ]
 
-    def generate_gallery_html
+    def generate_gallery_html(self):
         gallery_html = ""
         images = self.get_images()
     
