@@ -1,0 +1,35 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-resumechallenge
+  region: us-west-2
+
+vpc:
+  id: vpc-0868295c2ea8a132c
+  subnets:
+    private:
+      us-west-2a:
+        id: subnet-0bc1b843c08b499cf
+      us-west-2d:
+        id: subnet-077e2dfcabd732a4e
+      us-west-2c:
+        id: subnet-01aa389559f1cc37f
+      us-west-2b:
+        id: subnet-018f7afdcf89586f0
+  securityGroup: sg-0055315d041a8275f
+
+nodeGroups:
+  - name: resumechallenge-ng
+    instanceType: t3.micro
+    desiredCapacity: 1
+    privateNetworking: true
+    ssh:
+      allow: true
+      publicKeyName: resumechallenge
+    iam:
+      attachPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+    

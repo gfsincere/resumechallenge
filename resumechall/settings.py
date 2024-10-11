@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-8m4@4=j3z=8gv#*b1zcxyc65m2*2&xu4mw%85g*g%+8t4=b5tv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["www.gregoriethomas.com", "gregoriethomas.com", "localhost"]
 
 
 # Application definition
@@ -139,7 +139,11 @@ LOGIN_URL = "accounts:login"
 LOGIN_REDIRECT_URL = "public:index"
 LOGOUT_REDIRECT_URL = "public:index"
 
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

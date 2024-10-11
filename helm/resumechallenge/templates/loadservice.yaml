@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resumechallenge-alb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "application"  # Ensures it's an ALB
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 443  # The port the ALB listens on
+      targetPort: 443  # Your application's port
+  selector:
+    app: resumechallenge  # Ensure this matches your deployment's labels
