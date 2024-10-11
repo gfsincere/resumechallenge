@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: '0 0 * * *' # Daily backup at midnight UTC
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   backup:
     runs-on: ubuntu-latest
