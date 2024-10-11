@@ -36,7 +36,6 @@ RUN pip install --no-cache-dir -r requirements/prod.txt
 
 COPY manage.py  ./manage.py
 COPY setup.cfg ./setup.cfg
-COPY resumevenv ./resumevenv
 COPY resumechall ./resumechall
 COPY static ./static
 COPY Makefile ./Makefile
