@@ -21,8 +21,7 @@ services:
     command: python manage.py runserver 0.0.0.0:443
     volumes: *service-volumes
     environment: *app-variables
-    depends_on:
-      - postgres
+
     ports:
       - "443:443"
   db_migration:

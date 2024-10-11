@@ -39,13 +39,13 @@ spec:
           command: ["make", "start-server", "migrate"]
           env:
             - name: POSTGRES_DB
-              value: ${{ secrets.POSTGRES_DB }}
+              value: postgres
             - name: POSTGRES_USER
-              value: ${{ secrets.POSTGRES_USER }}
+              value: postgres
             - name: POSTGRES_HOST
               value: postgres
             - name: POSTGRES_PASSWORD
-              value: ${{ secrets.POSTGRES_PASSWORD }}
+              value: Iam1ronMan!
           ports:
             - name: https
               containerPort: {{ .Values.service.port }}
