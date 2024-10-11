@@ -7,7 +7,7 @@
           "Name": "gregoriethomas.com",
           "Type": "A",
           "AliasTarget": {
-            "HostedZoneId": "Z06311191J1NEAT206LO1", 
+            "HostedZoneId": "Z1H1FL5HABSF5", 
             "DNSName": "resumechallenge-alb-1351323621.us-west-2.elb.amazonaws.com",  
             "EvaluateTargetHealth": false
           }
