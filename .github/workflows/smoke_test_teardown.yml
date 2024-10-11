@@ -5,6 +5,9 @@ permissions:
   contents: read
 
 on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Daily backup at midnight UTC
   workflow_run:
     workflows: ["Update Route53 DNS"]
     types:
