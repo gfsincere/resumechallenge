@@ -1,3 +1,17 @@
-- name: Update Route 53 Record
-  run: |
-    aws route53 change-resource-record-sets --hosted-zone-id Z06311191J1NEAT206LO1 --change-batch file://.github/config/route53.json
+{
+    "Comment": "Update DNS to point to existing ALB",
+    "Changes": [
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "gregoriethomas.com",
+          "Type": "A",
+          "AliasTarget": {
+            "HostedZoneId": "Z06311191J1NEAT206LO1", 
+            "DNSName": "resumechallenge-alb-1351323621.us-west-2.elb.amazonaws.com",  
+            "EvaluateTargetHealth": false
+          }
+        }
+      }
+    ]
+}
