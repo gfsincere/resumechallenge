@@ -46,9 +46,13 @@ jobs:
     - name: Deploy Helm Chart to EKS
       env:
         AWS_REGION: us-west-2
+        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}      
       run: |
         helm upgrade --install resumechallenge ./helm/resumechallenge \
           --namespace default \
           --set image.repository=$396913714027.dkr.ecr.us-west-2.amazonaws.com/resumechallenge \
           --set image.tag=latest \
-          --set image.pullPolicy=Always
+          --set image.pullPolicy=Always \
+          --set postgres.user=$POSTGRES_USER \
+          --set postgres.password=$POSTGRES_PASSWORD
