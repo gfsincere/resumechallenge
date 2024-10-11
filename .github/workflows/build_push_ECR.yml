@@ -2,7 +2,7 @@ name: Build and Push to ECR
 
 on:
   workflow_run:
-    workflows: ["Sync files to S3"]
+    workflows: ["Deploy to S3"]
     types:
       - completed
 
