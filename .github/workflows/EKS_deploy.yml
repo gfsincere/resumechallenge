@@ -1,0 +1,44 @@
+name: Deploy to EKS
+
+on:
+  workflow_run:
+    workflows: ["Build and Push to ECR"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: Install kubectl and eksctl
+      run: |
+        curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.14/2022-05-05/bin/linux/amd64/kubectl
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/local/bin
+        curl -s --location "https://github.com/weaveworks/eksctl/releases/download/v0.95.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        sudo mv /tmp/eksctl /usr/local/bin
+
+    - name: Update kubeconfig for EKS cluster
+      run: |
+        aws eks update-kubeconfig --name eks-resumechallenge --region us-west-2
+
+    - name: Install Helm
+      run: |
+        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+    - name: Deploy Helm Chart to EKS
+      env:
+        AWS_REGION: us-west-2
+      run: |
+        helm upgrade --install resumechallenge ./helm/resumechallenge \
+          --namespace default \
+          --set image.repository=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/resumechallenge \
+          --set image.tag=latest \
+          --set image.pullPolicy=Always

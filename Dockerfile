@@ -1,5 +1,17 @@
 FROM python:3.12.6-slim AS production
 
+# Accept environment variables
+ARG POSTGRES_DB
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+ARG POSTGRES_HOST
+
+# Set environment variables
+ENV POSTGRES_DB=$POSTGRES_DB
+ENV POSTGRES_USER=$POSTGRES_USER
+ENV POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+ENV POSTGRES_HOST=$POSTGRES_HOST
+
 # Install system dependencies required for building Postgres and website packages
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -28,8 +40,8 @@ COPY resumevenv ./resumevenv
 COPY resumechall ./resumechall
 COPY static ./static
 COPY Makefile ./Makefile
-
-EXPOSE 8000
+COPY . .
+EXPOSE 443
 
 
 FROM production AS development

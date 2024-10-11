@@ -4,24 +4,33 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Daily backup at midnight UTC
 
 jobs:
-  deploy:
+  backup:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Install PostgreSQL Client
+      run: sudo apt-get update && sudo apt-get install -y postgresql-client
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
+    - name: Dump PostgreSQL Database
+      env:
+        PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      run: |
+        pg_dump -h ${{ secrets.POSTGRES_HOST }} -U ${{ secrets.POSTGRES_USER }} -d ${{ secrets.POSTGRES_DB }} -F c -b -v -f db_backup.dump
 
-      - name: Sync files to S3
-        run: |
+    - name: Upload Backup to S3
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+
+    - name: Sync files to S3
+      run: |
           aws s3 sync . s3://gregoriethomas.com --delete --exclude "bin/*" --exclude ".venv/*" --exclude ".git/*"  --exclude "resumechallenge/resumechallenge/bin/*" --exclude "/resumechallenge/pyvenv.cfg"
-
+          aws s3 cp db_backup.dump s3://gregoriethomas.com/db_backup-$(date +%F-%H-%M-%S).dump
     

@@ -1,0 +1,3 @@
+- name: Update Route 53 Record
+  run: |
+    aws route53 change-resource-record-sets --hosted-zone-id Z06311191J1NEAT206LO1 --change-batch file://.github/config/route53.json

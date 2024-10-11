@@ -78,10 +78,10 @@ WSGI_APPLICATION = "resumechall.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-POSTGRES_DB = os.environ.get("POSTGRES_DB")
-POSTGRES_USER = os.environ.get("POSTGRES_USER")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") # Change this to your postgres password
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="postgres") 
+POSTGRES_DB = os.environ.get("POSTGRES_DB", default="postgres")
+POSTGRES_USER = os.environ.get("POSTGRES_USER", default="postgres")
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD", default="Iam1ronMan!") 
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="postgres.cd0wk2awwh0x.us-west-2.rds.amazonaws.com") 
 
 
 DATABASES = {

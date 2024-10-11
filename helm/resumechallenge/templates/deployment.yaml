@@ -36,18 +36,18 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["make", "start-server"]
+          command: ["make", "start-server", "migrate"]
           env:
             - name: POSTGRES_DB
-              value: postgres
+              value: ${{ secrets.POSTGRES_DB }}
             - name: POSTGRES_USER
-              value: postgres
+              value: ${{ secrets.POSTGRES_USER }}
             - name: POSTGRES_HOST
               value: postgres
             - name: POSTGRES_PASSWORD
-              value: postgres
+              value: ${{ secrets.POSTGRES_PASSWORD }}
           ports:
-            - name: http
+            - name: https
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:

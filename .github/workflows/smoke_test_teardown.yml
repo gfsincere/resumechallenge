@@ -1,0 +1,47 @@
+name: Smoke Test and Tear Down
+
+on:
+  workflow_run:
+    workflows: ["Update Route53 DNS"]
+    types:
+      - completed
+
+jobs:
+  test-and-teardown:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Website Status
+      id: check_status
+      run: |
+        # Check if the website is reachable
+        if ! curl -Is https://gregoriethomas.com | grep "200 OK"; then
+          echo "Smoke test failed."
+          exit 1
+        fi
+
+    - name: Delete Nodes on Failure
+      if: failure()
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: Install kubectl and eksctl
+      if: failure()
+      run: |
+        curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.14/2022-05-05/bin/linux/amd64/kubectl
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/local/bin
+        curl -s --location "https://github.com/weaveworks/eksctl/releases/download/v0.95.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        sudo mv /tmp/eksctl /usr/local/bin
+
+    - name: Update kubeconfig
+      if: failure()
+      run: |
+        aws eks update-kubeconfig --name eks-resumechallenge --region us-west-2
+
+    - name: Scale Down Node Group
+      if: failure()
+      run: |
+        eksctl scale nodegroup --cluster eks-resumechallenge --name <nodegroup-name> --nodes 0
