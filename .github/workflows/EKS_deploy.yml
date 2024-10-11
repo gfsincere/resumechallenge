@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v3
       with:
@@ -26,7 +26,7 @@ jobs:
 
     - name: Install kubectl and eksctl
       run: |
-        curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.14/2022-05-05/bin/linux/amd64/kubectl
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         chmod +x ./kubectl
         sudo mv ./kubectl /usr/local/bin
         curl -s --location "https://github.com/weaveworks/eksctl/releases/download/v0.95.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
