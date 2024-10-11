@@ -1,14 +1,14 @@
 name: Update Route53 DNS
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   workflow_run:
     workflows: ["Deploy to EKS"]
     types:
       - completed
-
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
   update-dns:

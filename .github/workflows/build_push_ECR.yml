@@ -1,14 +1,14 @@
 name: Build and Push to ECR
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   workflow_run:
     workflows: ["Deploy to S3"]
     types:
       - completed
-
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
   build:
@@ -21,6 +21,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v3
       with:
         role-to-assume: arn:aws:iam::396913714027:role/github_actions
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: us-west-2
 
     - name: Log in to Amazon ECR
