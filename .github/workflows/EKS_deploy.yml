@@ -37,12 +37,15 @@ jobs:
       run: |
         curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
+    - name: Verify Kubernetes Access
+      run: kubectl get nodes
+
     - name: Deploy Helm Chart to EKS
       env:
         AWS_REGION: us-west-2
       run: |
         helm upgrade --install resumechallenge ./helm/resumechallenge \
           --namespace default \
-          --set image.repository=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/resumechallenge \
+          --set image.repository=396913714027.dkr.ecr.us-west-2.amazonaws.com/resumechallenge \
           --set image.tag=latest \
           --set image.pullPolicy=Always
