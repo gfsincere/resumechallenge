@@ -13,6 +13,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v3
       with:
@@ -23,7 +26,7 @@ jobs:
 
     - name: Install kubectl and eksctl
       run: |
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.14/2022-05-05/bin/linux/amd64/kubectl
         chmod +x ./kubectl
         sudo mv ./kubectl /usr/local/bin
         curl -s --location "https://github.com/weaveworks/eksctl/releases/download/v0.95.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -39,13 +42,13 @@ jobs:
 
     - name: Verify Kubernetes Access
       run: kubectl get nodes
-
+      
     - name: Deploy Helm Chart to EKS
       env:
         AWS_REGION: us-west-2
       run: |
         helm upgrade --install resumechallenge ./helm/resumechallenge \
           --namespace default \
-          --set image.repository=396913714027.dkr.ecr.us-west-2.amazonaws.com/resumechallenge \
+          --set image.repository=$396913714027.dkr.ecr.us-west-2.amazonaws.com/resumechallenge \
           --set image.tag=latest \
           --set image.pullPolicy=Always
