@@ -25,9 +25,9 @@ metadata:
             - name: POSTGRES_HOST
               value: postgres
             - name: POSTGRES_PASSWORD
-              value: Iam1ronMan!
+              value: "Iam1ronMan!"
           ports:
-            - name: https
+            - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
