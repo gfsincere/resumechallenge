@@ -18,13 +18,13 @@ services:
   web:
     image: resumechallenge:latest
     container_name: AWSresumechallenge
-    command: python manage.py runserver 0.0.0.0:443
+    command: python manage.py runserver 0.0.0.0:8000
     volumes: *service-volumes
     environment: *app-variables
     env_file:
       - .env
     ports:
-      - "443:443"
+      - "80:8000"
   db_migration:
     image: resumechallenge:latest
     command: python manage.py migrate

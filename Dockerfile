@@ -41,7 +41,7 @@ COPY resumechall ./resumechall
 COPY static ./static
 COPY Makefile ./Makefile
 COPY . .
-EXPOSE 443
+EXPOSE 8000
 
 
 FROM production AS development

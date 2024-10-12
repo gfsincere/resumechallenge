@@ -139,7 +139,7 @@ LOGIN_URL = "accounts:login"
 LOGIN_REDIRECT_URL = "public:index"
 LOGOUT_REDIRECT_URL = "public:index"
 
-SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
+# SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

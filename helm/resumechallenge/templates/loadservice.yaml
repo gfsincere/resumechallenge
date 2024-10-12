@@ -7,7 +7,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 443  # The port the ALB listens on
-      targetPort: 443  # Your application's port
+    - port: 80  # The port the ALB listens on
+      targetPort: 80  # Your application's port
   selector:
     app: resumechallenge  # Ensure this matches your deployment's labels
