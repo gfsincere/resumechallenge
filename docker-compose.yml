@@ -21,7 +21,8 @@ services:
     command: python manage.py runserver 0.0.0.0:443
     volumes: *service-volumes
     environment: *app-variables
-
+    env_file:
+      - .env
     ports:
       - "443:443"
   db_migration:
@@ -29,7 +30,8 @@ services:
     command: python manage.py migrate
     volumes: *service-volumes
     environment: *app-variables
-
+    env_file:
+      - .env
 
 
 volumes:
