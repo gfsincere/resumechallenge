@@ -1,0 +1,66 @@
+# Combined file: resumechall-all.yaml
+
+# Secret (not needed for Docker Hub, so this section can be omitted if not using any other secrets)
+
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resumechallenge
+  labels:
+    app: resumechallenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resumechallenge
+  template:
+    metadata:
+      labels:
+        app: resumechallenge
+    spec:
+      containers:
+      - name: resumechallenge
+        image: blacktonystark/resumechallenge:v0.0.4  # Docker Hub image
+        ports:
+          - containerPort: 8000:80
+        env:
+          - name: SECRET_KEY
+            value: "django-insecure-8m4@4=j3z=8gv#*b1zcxyc65m2*2&xu4mw%85g*g%+8t4=b5tv"
+          - name: DEBUG
+            value: "True"
+          - name: ALLOWED_HOSTS
+            value: "www.gregoriethomas.com,gregoriethomas.com,localhost"
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_DB
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_HOST
+            value: "postgres.cd0wk2awwh0x.us-west-2.rds.amazonaws.com"
+
+---
+
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: resumechall-service
+spec:
+  selector:
+    app: resumechallenge
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: LoadBalancer

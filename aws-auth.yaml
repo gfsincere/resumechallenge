@@ -10,6 +10,13 @@ data:
       groups:
         - system:bootstrappers
         - system:nodes
+        - system:masters
+    - rolearn: arn:aws:iam::396913714027:role/ecsTaskExecutionRole
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+        - system:masters
   mapUsers: |
     - userarn: arn:aws:iam::396913714027:user/github_actions
       username: github_actions
