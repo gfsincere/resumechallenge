@@ -24,7 +24,7 @@ services:
     env_file:
       - .env
     ports:
-      - "80:8000"
+      - "8000:8000"
   db_migration:
     image: resumechallenge:latest
     command: python manage.py migrate

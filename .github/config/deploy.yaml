@@ -23,7 +23,7 @@ spec:
       - name: resumechallenge
         image: blacktonystark/resumechallenge:v0.0.4  # Docker Hub image
         ports:
-          - containerPort: 8000:80
+          - containerPort: 8000:8000
         env:
           - name: SECRET_KEY
             value: "django-insecure-8m4@4=j3z=8gv#*b1zcxyc65m2*2&xu4mw%85g*g%+8t4=b5tv"
@@ -61,6 +61,6 @@ spec:
     app: resumechallenge
   ports:
   - protocol: TCP
-    port: 80
+    port: 8000
     targetPort: 8000
   type: LoadBalancer
