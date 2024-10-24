@@ -1,4 +1,4 @@
-tag=tatest
+tag=latest
 registry=blacktonystark
 image=resumechallenge
 

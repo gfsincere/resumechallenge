@@ -9,7 +9,7 @@ x-database-variables: &database-variables
 
 x-app-variables: &app-variables
   <<: *database-variables
-  POSTGRES_HOST: ${POSTGRES_HOST}
+  POSTGRES_HOST: postgres.cd0wk2awwh0x.us-west-2.rds.amazonaws.com
 
 
 
@@ -19,6 +19,8 @@ services:
     image: resumechallenge:latest
     container_name: AWSresumechallenge
     command: python manage.py runserver 0.0.0.0:8000
+#    depends_on:
+#      - postgres
     volumes: *service-volumes
     environment: *app-variables
     env_file:
@@ -30,9 +32,18 @@ services:
     command: python manage.py migrate
     volumes: *service-volumes
     environment: *app-variables
+#    depends_on:
+#      - postgres
     env_file:
       - .env
-
+#  postgres:
+#    image: postgres
+#    container_name: AWSresumechallenge_db
+#    environment: *database-variables
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
 
 volumes:
   db-data:
