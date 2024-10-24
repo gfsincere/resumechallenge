@@ -78,21 +78,10 @@ WSGI_APPLICATION = "resumechall.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-POSTGRES_DB = os.environ.get("POSTGRES_DB", default="postgres")
-POSTGRES_USER = os.environ.get("POSTGRES_USER", default="postgres")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD", default="Iam1ronMan!") 
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST", default="postgres.cd0wk2awwh0x.us-west-2.rds.amazonaws.com") 
-
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": POSTGRES_DB,
-        "USER": POSTGRES_USER,
-        "PASSWORD": POSTGRES_PASSWORD,
-        "HOST": POSTGRES_HOST,
-        "PORT": 5432,
-
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
