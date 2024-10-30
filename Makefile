@@ -23,7 +23,7 @@ compose-manage:
 	docker-compose run --rm web python manage.py $(cmd)
 
 start-server:
-	gunicorn --keep-alive 65 --bind 127.0.0.1:8000 resumechall.wsgi:application
+	python manage.py runserver 0.0.0.0:8000
 
 helm-deploy:
 	helm upgrade --install --debug resume ./helm/resumechallenge	
