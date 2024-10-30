@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-8m4@4=j3z=8gv#*b1zcxyc65m2*2&xu4mw%85g*g%+8t4=b5tv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["www.gregoriethomas.com", "gregoriethomas.com", "localhost"]
+ALLOWED_HOSTS = ["www.gregoriethomas.com", "gregoriethomas.com", "localhost, "]
 
 
 # Application definition
@@ -122,6 +122,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Governs login/logout behavior
 LOGIN_URL = "accounts:login"

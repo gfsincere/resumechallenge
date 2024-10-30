@@ -6,7 +6,7 @@ permissions:
 
 on:
   workflow_run:
-    workflows: ["Deploy to EKS"]
+    workflows: ["Deploy to S3"]
     types:
       - completed
 

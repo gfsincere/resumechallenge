@@ -25,3 +25,6 @@ def projects(request):
 
 def photos(request):
     return render(request, "photos.html")
+
+def health_check(request):
+    return HttpResponse("OK", status=200)

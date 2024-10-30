@@ -2,48 +2,18 @@
 x-service-volumes: &service-volumes
   - .:/app/:rw,cached
 
-x-database-variables: &database-variables
-  POSTGRES_DB: ${POSTGRES_DB}
-  POSTGRES_USER: ${POSTGRES_USER}
-  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
-x-app-variables: &app-variables
-  <<: *database-variables
-  POSTGRES_HOST: postgres
-
-
-
-
 services:
   web:
     image: resumechallenge:latest
     container_name: AWSresumechallenge
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --bind 0.0.0.0:8000 resumechall.wsgi:application
 #    depends_on:
 #      - postgres
     volumes: *service-volumes
-    environment: *app-variables
     env_file:
       - .env
     ports:
-      - "8000:8000"
-  db_migration:
-    image: resumechallenge:latest
-    command: python manage.py migrate
-    volumes: *service-volumes
-    environment: *app-variables
-    depends_on:
-      - postgres
-    env_file:
-      - .env
-  postgres:
-    image: postgres
-    container_name: AWSresumechallenge_db
-    environment: *database-variables
-    ports:
-      - "5432:5432"
-    volumes:
-      - db-data:/var/lib/postgresql/data
+      - "80:8000"
 
 volumes:
   db-data:
