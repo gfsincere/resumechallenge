@@ -6,7 +6,7 @@ services:
   web:
     image: resumechallenge:latest
     container_name: AWSresumechallenge
-    command: gunicorn --bind 0.0.0.0:8000 resumechall.wsgi:application
+    command: gunicorn --keep-alive 65 --bind 127.0.0.1:8000 resumechall.wsgi:application
 #    depends_on:
 #      - postgres
     volumes: *service-volumes
