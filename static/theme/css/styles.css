@@ -104,6 +104,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.center-about {
+  text-align: center; /* Center-aligns the text */
+  width: calc(100% / 12 * 5); /* Makes it take up 5 out of 12 columns */
+  margin-top: auto; /* Ensures that the element stays to the top */
+  padding-top: 20px; /* Adds some space to the right */
+}
+
 .right-about {
   text-align: right; /* Right-aligns the text */
   width: calc(100% / 12 * 5); /* Makes it take up 5 out of 12 columns */
